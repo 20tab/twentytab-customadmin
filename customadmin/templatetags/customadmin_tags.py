@@ -58,7 +58,7 @@ def add_app_icons(app_list, autocomplete):
         try:
             app_temp = [x for x in app_list if x.get('name').lower() == appicon.application.lower()][0]
             app_temp['image'] = def_app_img
-            if appicon.image is not None:
+            if appicon.image and appicon.image.url:
                 if os.path.exists("{}/{}".format(settings.MEDIA_ROOT,
                                                  appicon.image.url.replace(settings.MEDIA_URL, ""))):
                     app_temp['image'] = appicon.thumb
