@@ -1,9 +1,11 @@
 from appconf import AppConf
 from django.conf import settings
+import os
 
 
 class CustomAdminConf(AppConf):
     STATIC_URL = u'/static/'
+    STATIC_ROOT = os.path.join(os.getcwd(), 'static')
     USE_CUSTOM_ADMIN = True
 
     def configure_static_url(self, value):
@@ -11,6 +13,12 @@ class CustomAdminConf(AppConf):
             self._meta.holder.STATIC_URL = value
             return value
         return getattr(settings, 'STATIC_URL')
+
+    def configure_static_root(self, value):
+        if not getattr(settings, 'STATIC_ROOT', None):
+            self._meta.holder.STATIC_ROOT = value
+            return value
+        return getattr(settings, 'STATIC_ROOT')
 
     def configure_use_custom_admin(self, value):
         if not getattr(settings, 'USE_CUSTOM_ADMIN', None):
@@ -30,8 +38,8 @@ class CustomAdminConf(AppConf):
                 'customadmin.template_context.context_processors.customadmin_context'
             ]
         else:
-            middleware = getattr(settings, 'TEMPLATE_CONTEXT_PROCESSORS')
-            middleware.append('customadmin.template_context.context_processors.customadmin_context')
-            self._meta.holder.TEMPLATE_CONTEXT_PROCESSORS = middleware
+            context_processors = list(getattr(settings, 'TEMPLATE_CONTEXT_PROCESSORS'))
+            context_processors.append('customadmin.template_context.context_processors.customadmin_context')
+            self._meta.holder.TEMPLATE_CONTEXT_PROCESSORS = context_processors
 
         return self.configured_data

@@ -19,14 +19,14 @@ class CustomAdmin(models.Model):
     of this class. Infact base template use the first occurence find in the database
     """
     branding = models.CharField(max_length=200, null=True, blank=True,
-                                default=u"upyproject.com",
+                                default=u"",
                                 help_text=_(u"Set branding"),
                                 verbose_name=_(u"Branding"))
     branding_link = models.CharField(max_length=200, null=True, blank=True,
-                                     default=u"www.upyproject.com",
+                                     default=u"",
                                      help_text=_(u"Set branding's link"),
                                      verbose_name=_(u"Branding link"))
-    branding_image = models.FilePathField(path=settings.RELATIVE_STATIC_ROOT, null=True, blank=True,
+    branding_image = models.FilePathField(path=settings.STATIC_ROOT, null=True, blank=True,
                                           match="\.jpg|\.jpeg|.png|\.gif", recursive=True,
                                           help_text=_(u"Set brand's image."),
                                           verbose_name=_(u"Branding image"))
@@ -119,7 +119,7 @@ class CustomAdmin(models.Model):
 
     @property
     def branding_image_url(self):
-        return self.branding_image.replace(settings.RELATIVE_STATIC_ROOT, settings.STATIC_URL).replace("//", "/")
+        return u"{}".format(self.branding_image.replace("//", "/"))
 
     def save(self, *args, **kwargs):
         appicons = CustomApp.objects.all()

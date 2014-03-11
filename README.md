@@ -31,7 +31,7 @@ INSTALLED_APPS = {
 ```py
 urlpatterns = patterns('',
     ... ,
-    (r'^admin/', include(contrib_admin.site.urls)),
+    (r'^admin/', include(contrib.admin.site.urls)),
     (r'', include('customadmin.urls')),
     (r'^rosetta/', include('rosetta.urls')),
     (r'', include('inspectmodel.urls')),
