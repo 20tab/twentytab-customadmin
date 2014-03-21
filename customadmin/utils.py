@@ -19,9 +19,9 @@ def list_models():
     for model, model_admin in admin.site._registry.items():
         app_label = model._meta.app_label
         if app_label in apps.keys():
-            apps[app_label].append((model.__class__.__name__, model._meta.model_name))
+            apps[app_label].append((model.__name__, model.__name__))
         else:
-            apps[app_label] = [(model.__class__.__name__, model._meta.model_name)]
+            apps[app_label] = [(model.__name__, model.__name__)]
 
     res = []
     for app in sorted(apps.keys()):
