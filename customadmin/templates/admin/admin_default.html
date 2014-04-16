@@ -1,5 +1,9 @@
 {% load i18n admin_static %}
+{% if CUSTOM_ADMIN.use_log_sidebar %}
+<div id="content-main-custom-app">
+{% else %}
 <div id="content-main">
+{% endif %}
 {% for app in app_list %}
     <div class="module">
     <table summary="{% blocktrans with app.name as name %}Models available in the {{ name }} application.{% endblocktrans %}">
