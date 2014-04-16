@@ -104,13 +104,13 @@ class CustomAdmin(models.Model):
     @property
     def customization(self):
         """
-        It returns branding if defined, else image, else only his primary key.
+        It returns branding if defined, else only his primary key.
         """
         if self.branding:
             return self.branding
-        elif self.branding_image:
-            res = self.branding_image.split("/")[-1]
-            return res
+        # elif self.branding_image:
+        #     res = self.branding_image.split("/")[-1]
+        #     return res
         else:
             return self.pk
 
