@@ -12,7 +12,7 @@
 <h1 id="site-name">
 {% if CUSTOM_ADMIN %}
     {% if CUSTOM_ADMIN.branding_link %}<a href="http://{{CUSTOM_ADMIN.branding_link}}" title="{{CUSTOM_ADMIN.branding}}">{% endif %}
-    {% if CUSTOM_ADMIN.branding_image %}<img src = "{{CUSTOM_ADMIN.branding_image_url}}" alt = "{{CUSTOM_ADMIN.branding}}" />
+    {% if CUSTOM_ADMIN.branding_image %}<img src = "{{CUSTOM_ADMIN.branding_image.url}}" alt = "{{CUSTOM_ADMIN.branding}}" />
         <span>{{CUSTOM_ADMIN.branding}}</span>
     {% else %}{{CUSTOM_ADMIN.branding}}
     {% endif %}
@@ -29,7 +29,7 @@
         .ml {margin:0 10px 10px;display:block;float:left}
     </style>
 
-    <a href="/" class="ml">{% trans "Website home" %}</a>  
+    <a href="/" class="ml">{% trans "Website home" %}</a>
     <a href="/admin/" class="ml">{% trans "Admin home" %}</a>
     {% if user.is_superuser %}<a href="{% url "inspectmodel.views.browse" %}" class="ml">{% trans "Inspect models" %}</a>{% endif %}
 {% endblock nav-global %}

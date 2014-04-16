@@ -5,17 +5,15 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from colorful.fields import RGBColorField
 from sortable.models import PositionModel
-from django.conf import settings
 from imagekit.models import ImageSpecField, ProcessedImageField
 from pilkit.processors import ResizeToFit
 from twentytab.fields import NullTrueField
 from customadmin.utils import list_apps
-from . import conf
 
 
 class CustomAdmin(models.Model):
     """
-    This object define parameters to customize admin layout. It has sense if you use only a record 
+    This object define parameters to customize admin layout. It has sense if you use only a record
     of this class. Infact base template use the first occurence find in the database
     """
     branding = models.CharField(max_length=200, null=True, blank=True,
@@ -26,10 +24,9 @@ class CustomAdmin(models.Model):
                                      default=u"",
                                      help_text=_(u"Set branding's link"),
                                      verbose_name=_(u"Branding link"))
-    branding_image = models.FilePathField(path=settings.STATIC_ROOT, null=True, blank=True,
-                                          match="\.jpg|\.jpeg|.png|\.gif", recursive=True,
-                                          help_text=_(u"Set brand's image."),
-                                          verbose_name=_(u"Branding image"))
+    branding_image = models.ImageField(upload_to='customadmin', null=True, blank=True,
+                                       help_text=_(u"Set brand's image."),
+                                       verbose_name=_(u"Branding image"))
     default = NullTrueField(_(u"Default"), help_text=_(u"Select it if you want use this as default customization."),
                             unique=True)
     default_app_image = ProcessedImageField(verbose_name=_(u"Default app image"),
@@ -43,9 +40,9 @@ class CustomAdmin(models.Model):
                                options={'quality': 90})  #format='JPEG',
     model_image = ImageSpecField([ResizeToFit(50, 50)], source='default_model_image', options={'quality': 90})
 
-    bg_header = RGBColorField(max_length=200, null=True, blank=True,
-                           help_text=_(u"Set header's background color."),
-                           verbose_name=_(u"BG Header"))
+    bg_header = RGBColorField(null=True, blank=True,
+                              help_text=_(u"Set header's background color."),
+                              verbose_name=_(u"BG Header"))
     sitename_font = models.CharField(max_length=200, null=True, blank=True,
                                      help_text=_(u"Set sitename font."),
                                      verbose_name=_(u"Sitename font"))
@@ -55,25 +52,25 @@ class CustomAdmin(models.Model):
     sitename_font_weight = models.CharField(max_length=200, null=True, blank=True,
                                             help_text=_(u"Set sitename font weight."),
                                             verbose_name=_(u"Sitename font weight"))
-    table_title_bg = RGBColorField(max_length=200, null=True, blank=True,
-                                help_text=_(u"Set the background of title in tables."),
-                                verbose_name=_(u"BG table title "))
-    table_title_color = RGBColorField(max_length=200, null=True, blank=True,
-                                   help_text=_(u"Set the color of title in tables."),
-                                   verbose_name=_(u"Table title color"))
-    h2_color = RGBColorField(max_length=200, null=True, blank=True,
-                          help_text=_(u"Set h2 color."), verbose_name=_(u"H2 color"))
+    table_title_bg = RGBColorField(null=True, blank=True,
+                                   help_text=_(u"Set the background of title in tables."),
+                                   verbose_name=_(u"BG table title "))
+    table_title_color = RGBColorField(null=True, blank=True,
+                                      help_text=_(u"Set the color of title in tables."),
+                                      verbose_name=_(u"Table title color"))
+    h2_color = RGBColorField(null=True, blank=True,
+                             help_text=_(u"Set h2 color."), verbose_name=_(u"H2 color"))
     h2_size = models.CharField(max_length=200, null=True, blank=True,
                                help_text=_(u"Set h2 size."), verbose_name=_(u"H2 size"))
-    h3_color = RGBColorField(max_length=200, null=True, blank=True,
-                          help_text=_(u"Set h3 color."), verbose_name=_(u"H3 color"))
+    h3_color = RGBColorField(null=True, blank=True,
+                             help_text=_(u"Set h3 color."), verbose_name=_(u"H3 color"))
     h3_size = models.CharField(max_length=200, null=True, blank=True,
                                help_text=_(u"Set h3 size."), verbose_name=_(u"H3 size"))
-    link_color = RGBColorField(max_length=200, null=True, blank=True,
-                            help_text=_(u"Set link's color"), verbose_name=_(u"Link color"))
-    link_hover_color = RGBColorField(max_length=200, null=True, blank=True,
-                                  help_text=_(u"Set link's color when hover"),
-                                  verbose_name=_(u"Link hover color"))
+    link_color = RGBColorField(null=True, blank=True,
+                               help_text=_(u"Set link's color"), verbose_name=_(u"Link color"))
+    link_hover_color = RGBColorField(null=True, blank=True,
+                                     help_text=_(u"Set link's color when hover"),
+                                     verbose_name=_(u"Link hover color"))
     html_head = models.TextField(null=True, blank=True,
                                  help_text=_(u"Set other html code to put in HEAD section. "),
                                  verbose_name=_(u"Html head"))
@@ -116,10 +113,6 @@ class CustomAdmin(models.Model):
             return res
         else:
             return self.pk
-
-    @property
-    def branding_image_url(self):
-        return u"{}".format(self.branding_image.replace("//", "/"))
 
     def save(self, *args, **kwargs):
         appicons = CustomApp.objects.all()
@@ -169,7 +162,7 @@ class CustomApp(PositionModel):
 
 class CustomLink(PositionModel):
     """
-    This object links the installed_apps with an icon to use 
+    This object links the installed_apps with an icon to use
     if CustomAdmin.use_app_icons is True
     """
     link_url = models.CharField(max_length=250, default="/admin/",
@@ -214,4 +207,3 @@ class CustomModel(PositionModel):
         verbose_name_plural = _(u"Custom Models")
         unique_together = ('app', 'model')
         ordering = ['position']
- 
