@@ -33,8 +33,8 @@ class CustomAdminForm(forms.ModelForm):
                 # cleaned data.
                 del cleaned_data["view_mode"]
                 del cleaned_data["autocomplete_app_list"]
-                #raise forms.ValidationError(_("You have to define Customadmin in your CustomApp 
-                #if you use a custom view_mode without autocomplete_app_list"))  
+                #raise forms.ValidationError(_("You have to define Customadmin in your CustomApp
+                #if you use a custom view_mode without autocomplete_app_list"))
         elif view_mode and not autocomplete_models_list:
             try:
                 CustomModel.objects.get(model__iexact=CustomAdmin._meta.verbose_name_plural)
@@ -49,7 +49,7 @@ class CustomAdminForm(forms.ModelForm):
                 # cleaned data.
                 del cleaned_data["view_mode"]
                 del cleaned_data["autocomplete_models_list"]
-                #raise forms.ValidationError(_("You have to define Customadmin in your CustomApp 
+                #raise forms.ValidationError(_("You have to define Customadmin in your CustomApp
                 #if you use a custom view_mode without autocomplete_app_list"))
 
         return cleaned_data
@@ -89,9 +89,6 @@ class CustomAdminAdmin(admin.ModelAdmin):
 
     class Meta:
         model = CustomAdmin
-
-    class Media:
-        js = (u'{}customadmin/js/customadmin.js'.format(settings.STATIC_URL),)
 
 
 class CustomAppForm(forms.ModelForm):

@@ -41,35 +41,35 @@ class CustomAdmin(models.Model):
                                options={'quality': 90})  #format='JPEG',
     model_image = ImageSpecField([ResizeToFit(50, 50)], source='default_model_image', options={'quality': 90})
 
-    bg_header = RGBColorField(null=True, blank=True,
+    bg_header = RGBColorField(default_value='#4C6771', null=True, blank=True,
                               help_text=_(u"Set header's background color."),
                               verbose_name=_(u"BG Header"))
     sitename_font = models.CharField(max_length=200, null=True, blank=True,
                                      help_text=_(u"Set sitename font."),
                                      verbose_name=_(u"Sitename font"))
     sitename_font_size = models.CharField(max_length=200, null=True, blank=True,
-                                          help_text=_(u"Set sitename font size."),
+                                          help_text=_(u"Set sitename font size. If you insert a number remember to put px/pt at the end. (es. 100px)"),
                                           verbose_name=_(u"Sitename font size"))
     sitename_font_weight = models.CharField(max_length=200, null=True, blank=True,
                                             help_text=_(u"Set sitename font weight."),
                                             verbose_name=_(u"Sitename font weight"))
-    table_title_bg = RGBColorField(null=True, blank=True,
+    table_title_bg = RGBColorField(default_value='#4C6771', null=True, blank=True,
                                    help_text=_(u"Set the background of title in tables."),
                                    verbose_name=_(u"BG table title "))
-    table_title_color = RGBColorField(null=True, blank=True,
+    table_title_color = RGBColorField(default_value='#FFFFFF', null=True, blank=True,
                                       help_text=_(u"Set the color of title in tables."),
                                       verbose_name=_(u"Table title color"))
-    h2_color = RGBColorField(null=True, blank=True,
+    h2_color = RGBColorField(default_value='#FFFFFF', null=True, blank=True,
                              help_text=_(u"Set h2 color."), verbose_name=_(u"H2 color"))
     h2_size = models.CharField(max_length=200, null=True, blank=True,
-                               help_text=_(u"Set h2 size."), verbose_name=_(u"H2 size"))
-    h3_color = RGBColorField(null=True, blank=True,
+                               help_text=_(u"Set h2 size. If you insert a number remember to put px/pt at the end. (es. 100px)"), verbose_name=_(u"H2 size"))
+    h3_color = RGBColorField(default_value='#FFFFFF', null=True, blank=True,
                              help_text=_(u"Set h3 color."), verbose_name=_(u"H3 color"))
     h3_size = models.CharField(max_length=200, null=True, blank=True,
-                               help_text=_(u"Set h3 size."), verbose_name=_(u"H3 size"))
-    link_color = RGBColorField(null=True, blank=True,
+                               help_text=_(u"Set h3 size. If you insert a number remember to put px/pt at the end. (es. 100px)"), verbose_name=_(u"H3 size"))
+    link_color = RGBColorField(default_value='#5b80b2', null=True, blank=True,
                                help_text=_(u"Set link's color"), verbose_name=_(u"Link color"))
-    link_hover_color = RGBColorField(null=True, blank=True,
+    link_hover_color = RGBColorField(default_value='#036', null=True, blank=True,
                                      help_text=_(u"Set link's color when hover"),
                                      verbose_name=_(u"Link hover color"))
     html_head = models.TextField(null=True, blank=True,
