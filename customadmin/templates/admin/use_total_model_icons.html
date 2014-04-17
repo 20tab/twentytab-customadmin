@@ -3,7 +3,7 @@
 
 <div id="content-main-icon">
 <div class="module">
-    
+
 {% for app in app_list|add_model_icons:CUSTOM_ADMIN %}
     {% comment %}
     <table summary="{% blocktrans with app.verbose_app_name as name %}Models available in the {{ name }} application.{% endblocktrans %}">
@@ -20,7 +20,7 @@
                 			<a href="{{ model.admin_url }}">{{ model.name }}</a>
 			            {% else %}
                 			{{ model.name }}
-			            {% endif %}		
+			            {% endif %}
 					</div>
 					<div class="fixfloat"></div>
 				</div>
@@ -41,7 +41,7 @@
         {% endif %}
     {% endfor %}
 
-	
+
     <!-- </table> -->
 {% endfor %}
 <div class="fixfloat"></div>
@@ -52,7 +52,7 @@
 </table>
 {% for link in CUSTOM_LINK_LIST %}
 <div class="app_icon_box">
-	<a href="{{ link.link_url }}" class="section"><img src="{% if link.image %}{{ link.image.url }}{% else %}/upy_static/images/default_app_icon.png{% endif %}" alt="{% blocktrans with link.verbose_url_name as name %}{{ name }}{% endblocktrans %}" /></a>
+	<a href="{{ link.link_url }}" class="section"><img src="{% if link.image %}{{ link.image.url }}{% else %}{{ STATIC_URL }}customadmin/images/default_app_icon.png{% endif %}" alt="{% blocktrans with link.verbose_url_name as name %}{{ name }}{% endblocktrans %}" /></a>
     <p><a href="{{ link.link_url }}" class="section">{% blocktrans with link.verbose_url_name as name %}{{ name }}{% endblocktrans %}</a></p>
   </div> <!-- /module -->
 {% endfor %}

@@ -3,7 +3,7 @@
 
 <div id="content-main-icon">
 <div class="module">
-    
+
 {% for app in app_list|custom_app_list:CUSTOM_ADMIN.autocomplete_app_list %}
     {% if app.models|add_model_icons:CUSTOM_ADMIN.autocomplete_models_list %}
     {% comment %}
@@ -16,13 +16,13 @@
             {% if not model.perms.list_hide %} {# prevede perms['list_hide'] #}
 	            <div class = "box_model">
 					<div class = "box_model_row">
-						<div class="box_model_row_image"><a href="{{ model.admin_url }}"><img src="{% if model.image %}{{ model.image.url }}{% else %}/upy_static/images/upy_model.png{% endif %}" alt="{{model.name}}" /></a></div>
+						<div class="box_model_row_image"><a href="{{ model.admin_url }}"><img src="{% if model.image %}{{ model.image.url }}{% else %}{{ STATIC_URL }}customadmin/images/upy_model.png{% endif %}" alt="{{model.name}}" /></a></div>
 						<div class="box_model_row_name">
 							{% if model.perms.change %}
 	                			<a href="{{ model.admin_url }}">{{ model.name }}</a>
 				            {% else %}
 	                			{{ model.name }}
-				            {% endif %}		
+				            {% endif %}
 						</div>
 						<div class="fixfloat"></div>
 					</div>
@@ -43,9 +43,9 @@
             {% endif %}
         {% endfor %}
     {% endif %}
-	
+
     <!-- </table> -->
-    
+
     {% endif %}
 {% endfor %}
 <div class="fixfloat"></div>
