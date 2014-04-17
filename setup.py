@@ -13,7 +13,7 @@ setup(
         'Django >=1.6',
         'Pillow >=2.3',
         'django-imagekit >=3.2',
-        'django-colorful >=0.1.3',
+        'twentytab-colorful >=0.1',
         'twentytab-utils',
         'twentytab-sortable',
         'django-rosetta >=0.7.3',
