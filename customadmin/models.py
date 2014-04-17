@@ -23,7 +23,7 @@ class CustomAdmin(models.Model):
                                 verbose_name=_(u"Branding"))
     branding_link = models.CharField(max_length=200, null=True, blank=True,
                                      default=u"",
-                                     help_text=_(u"Set branding's link"),
+                                     help_text=_(u"Set branding's link, takes an absolute link without 'http://'. (ex. 'www.djangoproject.com')"),
                                      verbose_name=_(u"Branding link"))
     branding_image = models.ImageField(upload_to='customadmin', null=True, blank=True,
                                        help_text=_(u"Set brand's image."),
