@@ -8,5 +8,4 @@ Overview
 What is ``twentytab-customadmin``?
 ==================================
 
-``twentytab-customadmin`` (``customadmin`` from now on) is a reusable Django app which aims to provide
-a beautiful admin interface ready to be customized.
+``twentytab-customadmin`` A django app to customize your admin interface with icons for applications and models and other (useful and beautiful) stuff.
