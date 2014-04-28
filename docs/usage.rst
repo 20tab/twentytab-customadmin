@@ -1,6 +1,6 @@
-========
-Tutorial
-========
+=====
+Usage
+=====
 
 In your admin interface you now have ``Customadmin`` app with 4 models:
 
