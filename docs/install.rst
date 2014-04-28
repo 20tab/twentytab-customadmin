@@ -51,7 +51,7 @@ opening a Python interpreter and entering the following commands::
 
    >>> import customadmin
    >>> customadmin.VERSION
-   (0, 7, '+dev')
+   (0, 7)
 
 When you want to update your copy of the source code, run ``git pull``
 from within the ``twentytab-customadmin`` directory.

@@ -66,20 +66,39 @@ Code
 
 **Use css code**: if not checked the css code defined in **Css code** is disabled.
 
-.. _Custom Model:
-
-------------
-Custom Model
-------------
-
 .. _Custom App:
 
 ----------
 Custom App
 ----------
+``twentytab-customadmin`` automatically creates one entry for each synchronized app.
+
+You can modify the order in which apps are displayed in the admin homepage simply dragging and dropping them (thanks to `twentytab-sortable`_)
+
+change the **Verbose app name**
+
+change the app's icon image (only if you selected *Use apps' icon system* or *Use apps and models icon system* in **View Mode** in your :ref:`Custom Admin` configuration)
+
+or decide to hide this application from the admin homepage (only if **Autocompelte App** field in your :ref:`Custom Admin` configuration is unchecked).
+
+.. _`twentytab-sortable`: https://github.com/20tab/twentytab-sortable
+
+.. _Custom Model:
+
+------------
+Custom Model
+------------
+Like :ref:`Custom App` you can modify the order in which models are displayed simply dragging and dropping them (thanks to `twentytab-sortable`_)
+
+change the model's icon image (only if you selected one between *Use apps and models icon system*, *Use models' icons system in index group models by app* or *Use models' icons system in index ungroup models by app* in **View Mode** in your :ref:`Custom Admin` configuration).
+
+In the end, differently from :ref:`Custom App`, if **Autocompelte Model** field in your :ref:`Custom Admin` configuration is unchecked then only models that you created here are shown.
 
 .. _Custom Link:
 
 -----------
 Custom Link
 -----------
+``twentytab-customadmin`` allows you to create custom links (asbolute or relative) that will be shown in the admin homepage with your models.
+
+Like the apps and the models you can give them an image (if no image is provided then the default app icon will be displayed).

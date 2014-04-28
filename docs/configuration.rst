@@ -42,6 +42,8 @@ Run `collectstatic command`_ or map static directory. If you use `uWSGI`_ you ca
 
     static-map = /static/customadmin/=%(path-to-site-packages)/customadmin/static/customadmin
     static-map = /static/colorful/=%(path-to-site-packages)/colorful/static/colorful
+    static-map = /static/sortable/=%(path-to-site-packages)/sortable/static/sortable
+    static-map = /static/image_ui/=%(path-to-site-packages)/image_ui/static/image_ui
 
 .. _`collectstatic command`: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#collectstatic
 .. _`uWSGI`: https://github.com/unbit/uwsgi

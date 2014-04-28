@@ -16,13 +16,4 @@ If you're new to twentytab-customadmin you may want to start with these documets
    overview
    install
    configuration
-   tutorial
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+   usage
