@@ -65,5 +65,5 @@ from within the ``twentytab-customadmin`` directory.
    before you update your copy of the source code.
 
 .. _`github`: https://github.com/20tab/twentytab-customadmin
-.. _`PYTHONPATH`: http://docs.python.org/tut/node8.html#SECTION008110000000000000000
+.. _`PYTHONPATH`: https://docs.python.org/2/install/index.html?highlight=pythonpath#modifying-python-s-search-path
 .. _`Commit History`: https://github.com/20tab/twentytab-customadmin/commits/master

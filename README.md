@@ -3,6 +3,10 @@ twentytab-customadmin
 
 A django app to customize your admin interface with icons for applications and models and other stuffs
 
+## Documentation
+
+Read the full documentation at: http://twentytab-customadmin.readthedocs.org
+
 ## Installation
 
 Use the following command: <b><i>pip install twentytab-customadmin</i></b>
