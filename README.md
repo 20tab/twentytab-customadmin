@@ -45,5 +45,8 @@ urlpatterns = patterns('',
 Run collectstatic command or map static directory. If you use uWSGI you can map static files:
 
 ```ini
-static-map = /static/customadmin/=%(path_to_site_packages)/customadmin/static/customadmin
+static-map = /static/customadmin/=%(path-to-site-packages)/customadmin/static/customadmin
+static-map = /static/colorful/=%(path-to-site-packages)/colorful/static/colorful
+static-map = /static/sortable/=%(path-to-site-packages)/sortable/static/sortable
+static-map = /static/image_ui/=%(path-to-site-packages)/image_ui/static/image_ui
 ```
