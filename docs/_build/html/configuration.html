@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration &mdash; twentytab-customadmin 0.6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="twentytab-customadmin 0.6 documentation" href="index.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="usage.html" title="Usage"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">twentytab-customadmin 0.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuration">
+<h1><a class="toc-backref" href="#id1">Configuration</a><a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#configuration" id="id1">Configuration</a><ul>
+<li><a class="reference internal" href="#settings-py" id="id2">settings.py</a></li>
+<li><a class="reference internal" href="#urls-py" id="id3">urls.py</a></li>
+<li><a class="reference internal" href="#static-files" id="id4">Static files</a></li>
+<li><a class="reference internal" href="#run-syncdb" id="id5">Run syncdb</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="settings-py">
+<h2><a class="toc-backref" href="#id2">settings.py</a><a class="headerlink" href="#settings-py" title="Permalink to this headline">¶</a></h2>
+<p>Open <tt class="docutils literal"><span class="pre">settings.py</span></tt> and add <tt class="docutils literal"><span class="pre">twentytab-customadmin</span></tt> to your <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> (before django.contrib.admin):</p>
+<div class="highlight-python"><div class="highlight"><pre>INSTALLED_APPS = {
+    ...,
+    &#39;customadmin&#39;,
+    &#39;django.contrib.admin&#39;,
+    &#39;inspectmodel&#39;,
+    &#39;imagekit&#39;,
+    &#39;image_ui&#39;,
+    &#39;rosetta&#39;,
+    ...
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="urls-py">
+<h2><a class="toc-backref" href="#id3">urls.py</a><a class="headerlink" href="#urls-py" title="Permalink to this headline">¶</a></h2>
+<p>Open <tt class="docutils literal"><span class="pre">urls.py</span></tt> and add those views to your <tt class="docutils literal"><span class="pre">urlpatters</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="o">...</span> <span class="p">,</span>
+    <span class="p">(</span><span class="s">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">contrib</span><span class="o">.</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">r&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;customadmin.urls&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">r&#39;^rosetta/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;rosetta.urls&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">r&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;inspectmodel.urls&#39;</span><span class="p">)),</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="static-files">
+<h2><a class="toc-backref" href="#id4">Static files</a><a class="headerlink" href="#static-files" title="Permalink to this headline">¶</a></h2>
+<p>Run <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#collectstatic">collectstatic command</a> or map static directory. If you use <a class="reference external" href="https://github.com/unbit/uwsgi">uWSGI</a> you can map static files:</p>
+<div class="highlight-python"><div class="highlight"><pre>static-map = /static/customadmin/=%(path-to-site-packages)/customadmin/static/customadmin
+static-map = /static/colorful/=%(path-to-site-packages)/colorful/static/colorful
+static-map = /static/sortable/=%(path-to-site-packages)/sortable/static/sortable
+static-map = /static/image_ui/=%(path-to-site-packages)/image_ui/static/image_ui
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-syncdb">
+<h2><a class="toc-backref" href="#id5">Run syncdb</a><a class="headerlink" href="#run-syncdb" title="Permalink to this headline">¶</a></h2>
+<p>Last (but not least) run:</p>
+<div class="highlight-python"><div class="highlight"><pre>python manage.py syncdb
+</pre></div>
+</div>
+<p>To create <tt class="docutils literal"><span class="pre">twentytab-customadmin</span></tt> tables, now your are ready for the funny part.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuration</a><ul>
+<li><a class="reference internal" href="#settings-py">settings.py</a></li>
+<li><a class="reference internal" href="#urls-py">urls.py</a></li>
+<li><a class="reference internal" href="#static-files">Static files</a></li>
+<li><a class="reference internal" href="#run-syncdb">Run syncdb</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="next chapter">Usage</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/configuration.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="usage.html" title="Usage"
+             >next</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">twentytab-customadmin 0.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, 20tab srl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
