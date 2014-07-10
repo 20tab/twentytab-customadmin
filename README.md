@@ -42,4 +42,4 @@ urlpatterns = patterns('',
 
 - Static files
 
-Run collectstatic command or map static directory. 
+Run collectstatic command or map static directory.

@@ -26,8 +26,9 @@
     <style type="text/css">
         .ml {margin:0 10px 10px;display:block;float:left}
     </style>
-
-    <a href="/" class="ml">{% trans "Website home" %}</a>
-    <a href="/admin/" class="ml">{% trans "Admin home" %}</a>
-    {% if user.is_superuser %}<a href="{% url "inspectmodel.views.browse" %}" class="ml">{% trans "Inspect models" %}</a>{% endif %}
+    <div>
+        <a href="/" class="ml">{% trans "Website home" %}</a>
+        <a href="/admin/" class="ml">{% trans "Admin home" %}</a>
+        {% if user.is_superuser %}<a href="{% url "inspectmodel.views.browse" %}" class="ml">{% trans "Inspect models" %}</a>{% endif %}
+    </div>
 {% endblock nav-global %}
