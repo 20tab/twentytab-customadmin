@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'twentytab-customadmin'
-copyright = u'2014, Francesco Leacche'
+copyright = u'2014, 20tab srl'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -165,7 +165,7 @@ html_static_path = ['_static']
 #html_domain_indices = True
 
 # If false, no index is generated.
-#html_use_index = True
+html_use_index = False
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
@@ -209,7 +209,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'twentytab-customadmin.tex', u'twentytab-customadmin Documentation',
-   u'Francesco Leacche', 'manual'),
+   u'20tab srl', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -239,7 +239,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'twentytab-customadmin', u'twentytab-customadmin Documentation',
-     [u'Francesco Leacche'], 1)
+     [u'20tab srl'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -253,7 +253,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'twentytab-customadmin', u'twentytab-customadmin Documentation',
-   u'Francesco Leacche', 'twentytab-customadmin', 'One line description of project.',
+   u'20tab srl', 'twentytab-customadmin', 'One line description of project.',
    'Miscellaneous'),
 ]
 

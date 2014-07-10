@@ -3,6 +3,10 @@ twentytab-customadmin
 
 A django app to customize your admin interface with icons for applications and models and other stuffs
 
+## Documentation
+
+Read the full documentation at: http://twentytab-customadmin.readthedocs.org
+
 ## Installation
 
 Use the following command: <b><i>pip install twentytab-customadmin</i></b>
@@ -42,4 +46,15 @@ urlpatterns = patterns('',
 
 - Static files
 
+<<<<<<< HEAD
 Run collectstatic command or map static directory.
+=======
+Run collectstatic command or map static directory. If you use uWSGI you can map static files:
+
+```ini
+static-map = /static/customadmin/=%(path-to-site-packages)/customadmin/static/customadmin
+static-map = /static/colorful/=%(path-to-site-packages)/colorful/static/colorful
+static-map = /static/sortable/=%(path-to-site-packages)/sortable/static/sortable
+static-map = /static/image_ui/=%(path-to-site-packages)/image_ui/static/image_ui
+```
+>>>>>>> 4f784768ea81f807ec1714247931a235a7ef0322
