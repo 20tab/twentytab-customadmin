@@ -1,6 +1,5 @@
 from customadmin.models import CustomAdmin, CustomLink
 from django.conf import settings
-from django.contrib.admin.sites import site
 
 
 def customadmin_context(request):
