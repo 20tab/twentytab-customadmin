@@ -1,5 +1,7 @@
+from __future__ import unicode_literals
 from customadmin.models import CustomAdmin, CustomLink
 from django.conf import settings
+import django
 
 
 def customadmin_context(request):
@@ -20,4 +22,5 @@ def customadmin_context(request):
             context_extras['USE_CUSTOM_ADMIN'] = settings.USE_CUSTOM_ADMIN
         else:
             context_extras['USE_CUSTOM_ADMIN'] = False
+        context_extras['django_version'] = int('{}{}'.format(django.VERSION[0], django.VERSION[1]))
     return context_extras

@@ -41,7 +41,9 @@
 {% block breadcrumbs %}
 <div class="breadcrumbs">
 <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>{% if CUSTOM_ADMIN.view_mode != "use_model_icons" and CUSTOM_ADMIN.view_mode != "use_total_model_icons" %}
-&rsaquo; <a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{ app_label|capfirst|escape }}</a>{% endif %}
+&rsaquo; <a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">
+    {% if django_version < 17 %}{{ app_label|capfirst|escape }}{% else %}{{ cl.opts.app_config.verbose_name }}{% endif %}
+</a>{% endif %}
 &rsaquo; {{ cl.opts.verbose_name_plural|capfirst }}
 </div>
 {% endblock %}
