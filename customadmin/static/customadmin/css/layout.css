@@ -83,8 +83,9 @@ h3 a:hover{}
 
 .dashboard div.appicon-content{width: 90% !important;}
 #content-main{/*background-color:yellow;*/}
-#content-main-icon{/*background-color:green; */}
-#content-main-icon-link{/*background-color:red; */}
+#content-main-icon{
+    display: inline-flex;
+}
 #content-main-custom-app{width:50%;float:left;}
 
 
