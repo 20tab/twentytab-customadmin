@@ -75,8 +75,8 @@ h3 a:hover{}
 /* ************************************************************************ */
 /* ************************************************************************ */
 .app_icon_box{
-	color: #888 !important; max-width: 150px; display: inline-block; 
-	margin: 30px; text-align: center; font-weight: bold;
+	color: #888 !important; max-width: 100px; display: inline-block;
+	margin: 30px; text-align: center; font-weight: bold; float: left;
 }
 .app_icon_box a{color: #888 !important;}
 .app_icon_box a:hover{color: #f49e00 !important;}
@@ -84,7 +84,7 @@ h3 a:hover{}
 .dashboard div.appicon-content{width: 90% !important;}
 #content-main{/*background-color:yellow;*/}
 #content-main-icon{
-    display: inline-flex;
+    /*display: inline-flex;*/
 }
 #content-main-custom-app{width:50%;float:left;}
 
