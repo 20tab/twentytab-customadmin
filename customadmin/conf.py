@@ -33,13 +33,15 @@ class CustomAdminConf(AppConf):
             site.index_template = "admin/custom_index.html"
             site.app_index_template = "admin/app_index.html"
 
-        if not getattr(settings, 'TEMPLATE_CONTEXT_PROCESSORS', None):
+        context_processors = getattr(settings, 'TEMPLATE_CONTEXT_PROCESSORS', None)
+        customadmin_context_processor = 'customadmin.template_context.context_processors.customadmin_context'
+        if not context_processors:
             self._meta.holder.TEMPLATE_CONTEXT_PROCESSORS = [
-                'customadmin.template_context.context_processors.customadmin_context'
+                customadmin_context_processor,
             ]
-        else:
-            context_processors = list(getattr(settings, 'TEMPLATE_CONTEXT_PROCESSORS'))
-            context_processors.append('customadmin.template_context.context_processors.customadmin_context')
+        elif customadmin_context_processor not in context_processors:
+            context_processors = list(context_processors)
+            context_processors.append(customadmin_context_processor)
             self._meta.holder.TEMPLATE_CONTEXT_PROCESSORS = context_processors
 
         return self.configured_data

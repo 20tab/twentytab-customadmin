@@ -9,7 +9,7 @@ from imagekit.models import ImageSpecField, ProcessedImageField
 from pilkit.processors import ResizeToFit
 from twentytab.fields import NullTrueField
 from customadmin.utils import list_apps
-from . import conf  #needed to load conf, even if not used
+from . import conf  #needed to load conf
 
 
 class CustomAdmin(models.Model):
