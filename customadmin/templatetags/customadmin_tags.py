@@ -56,8 +56,9 @@ def add_app_icons(app_list, autocomplete):
     app_list_ok = []
     for appicon in app_icon_list:
         try:
-            app_temp = [x for x in app_list if x.get('name').lower() == appicon.application.lower()][0]
+            app_temp = [x for x in app_list if x.get('app_label').lower() == appicon.application.lower()][0]
             app_temp['image'] = def_app_img
+
             if appicon.image and appicon.image.url:
                 if os.path.exists("{}/{}".format(settings.MEDIA_ROOT,
                                                  appicon.image.url.replace(settings.MEDIA_URL, ""))):
@@ -65,7 +66,7 @@ def add_app_icons(app_list, autocomplete):
             app_temp['verbose_app_name'] = appicon.verbose_app_name
             app_list_ok.append(app_temp)
             #app_list_ok.extend([x for x in app_list if x.get('name') == appicon.application])
-        except IndexError:
+        except Exception, e:
             pass # probabilmente e' stata inserita nella lista di applicazioni con icona
                 # una applicazione che non e' tra quelle registrate nell'admin,
                 # quindi poco male...
