@@ -106,20 +106,21 @@ def add_model_icons(app_list, custom_admin):
         models_list = app['models']
         
         for m in custommodels:
-            names.append(m.model.lower())
-            try:
-                model_temp = [x for x in models_list if u"%s" % x['object_name'].lower() == u"%s" % m.model.lower()][0]
-                model_temp['image'] = def_model_img
-                if m.image:
-                    if os.path.exists("{}/{}".format(
-                            settings.MEDIA_ROOT,
-                            m.image.url.replace(settings.MEDIA_URL, ""))
-                    ):
-                        model_temp['image'] = m.thumb
-                models_temp.append(model_temp)
+            if m.app == app:
+                names.append(m.model.lower())
+                try:
+                    model_temp = [x for x in models_list if u"%s" % x['object_name'].lower() == u"%s" % m.model.lower()][0]
+                    model_temp['image'] = def_model_img
+                    if m.image:
+                        if os.path.exists("{}/{}".format(
+                                settings.MEDIA_ROOT,
+                                m.image.url.replace(settings.MEDIA_URL, ""))
+                        ):
+                            model_temp['image'] = m.thumb
+                    models_temp.append(model_temp)
 
-            except IndexError:
-                pass
+                except IndexError:
+                    pass
         
         if custom_admin.autocomplete_models_list:
             for m in models_list:
