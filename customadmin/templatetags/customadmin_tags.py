@@ -106,7 +106,7 @@ def add_model_icons(app_list, custom_admin):
         models_list = app['models']
         
         for m in custommodels:
-            if m.app == app:
+            if m.app == app.get('app_label'):
                 names.append(m.model.lower())
                 try:
                     model_temp = [x for x in models_list if u"%s" % x['object_name'].lower() == u"%s" % m.model.lower()][0]
@@ -121,7 +121,8 @@ def add_model_icons(app_list, custom_admin):
 
                 except IndexError:
                     pass
-        
+
+                print m
         if custom_admin.autocomplete_models_list:
             for m in models_list:
                 if m['object_name'].lower() not in names:
