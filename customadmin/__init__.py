@@ -1,6 +1,6 @@
 """
 Customadmin is an application that allow admin interface's customization. 
 """
-VERSION = (0, 16)
+VERSION = (0, 17)
 __version__ = '.'.join(map(str, VERSION))
-DATE = "2014-12-15"
+DATE = "2015-02-03"

@@ -122,7 +122,6 @@ def add_model_icons(app_list, custom_admin):
                 except IndexError:
                     pass
 
-                print m
         if custom_admin.autocomplete_models_list:
             for m in models_list:
                 if m['object_name'].lower() not in names:

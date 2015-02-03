@@ -160,7 +160,6 @@ class CustomModelForm(forms.ModelForm):
         super(CustomModelForm, self).__init__(*args, **kwargs)
         listmodels = list_models()
         listapps = list_apps()
-        print listapps
         if self.instance.pk:
             listmodels.append([self.instance.model] * 2)
         self.fields['model'].widget = forms.Select(choices=listmodels)
